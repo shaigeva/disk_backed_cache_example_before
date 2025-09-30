@@ -16,7 +16,7 @@ Implementation follows the plan in `IMPLEMENTATION_PLAN.md` - and progress is up
 ```bash
 # 1. Validations
 ./devtools/run_all_agent_validations.sh    # Always run before responding
-uv run pytest tests/api/test_specific.py -v       # Run specific tests for faster feedback
+uv run pytest tests/test_specific.py -v       # Run specific tests for faster feedback
 
 # 2. Common Commands
 git status                                  # Check working directory
@@ -94,6 +94,9 @@ Tests must be isolated so they never interfere with each other.
 Tests must use clear language: decisive, specific and explicit.
 
 Avoid using mocks. Simulators for quick tests are fine (it's ok to test using in-memory sqlite some of the time instead of disk based for performance).
+
+Test file names should be significant and descriptive of content.
+
 
 
 
