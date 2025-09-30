@@ -2,7 +2,8 @@
   "permissions": {
     "allow": [
       "Bash(command ls -la devtools/)",
-      "Bash(./devtools/run_all_agent_validations.sh:*)"
+      "Bash(./devtools/run_all_agent_validations.sh:*)",
+      "Bash(command git log --oneline -3)"
     ],
     "deny": [],
     "ask": []
