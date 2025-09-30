@@ -29,8 +29,8 @@ pydantic_cache/
 ## Architecture
 
 ### Two-Tier Design
-- **In-Memory Cache**: Fast access, limited size, shorter TTL
-- **SQLite Disk Cache**: Persistent storage, larger capacity, longer TTL
+- **In-Memory Cache**: Fast access, references existing objects (no serialization), limited size, shorter TTL
+- **SQLite Disk Cache**: Persistent storage (objects are serialized), larger capacity, longer TTL
 - Disk backs memory - evicting from disk also evicts from memory
 - Items exceeding max_item_size are stored on disk only
 
