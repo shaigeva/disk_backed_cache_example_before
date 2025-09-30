@@ -95,8 +95,11 @@ Tests must use clear language: decisive, specific and explicit.
 
 Avoid using mocks. Simulators for quick tests are fine (for example, it's ok to test using in-memory sqlite some of the time instead of disk based for performance).
 
-Test file names should be significant and descriptive of content. They should not include temporary references like
-"test_step_02...".
+Test file names should be significant, specific and descriptive of content. 
+GOOD: test_basic_put_and_get.py
+BAD: test_step_03_basic_put_and_get.py
+BAD: test_cache.py
+
 
 
 
