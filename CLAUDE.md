@@ -28,7 +28,8 @@ git status                                  # Check working directory
 After ANY change, the `./devtools/run_all_agent_validations.sh` must pass before returning to the user
 without any errors or warnings. Don't accept any errors or warnings unless you failed fixing them.
 
-All changes must pass full validation suite before user response
+All changes must pass full validation suite before user response.
+
 
 🚨🚨🚨 ABSOLUTE ZERO TOLERANCE POLICY 🚨🚨🚨
 **EVERY SINGLE TEST MUST PASS. EVERY SINGLE WARNING MUST BE FIXED.**
@@ -54,6 +55,10 @@ All changes must pass full validation suite before user response
 **✅ THERE ARE ONLY 2 ACCEPTABLE OUTCOMES ✅**
 - All tests and validations pass as-is.
 - You've tried to fix the errors and failed.
+
+In order to finish every task and sub-task, you must run `./devtools/run_all_agent_validations.sh`.
+You must never move to the next sub-task before running the validations and getting a result without errors or warnings.
+If you failed fixing, stop and tell the user.
 
 ### **🚫 FORBIDDEN PHRASES 🚫**
 
