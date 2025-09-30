@@ -72,6 +72,24 @@ All changes must pass full validation suite before user response
 - **Test-First Implementation** (external API-level tests are Priority 1)
 - **No Layer-Based Changes**. Complete capabilities only - DO NOT implement multiple distinct capabilities in the same change. DO implement a capability and all its tests before continuing to the next capability.
 
+### **Small parts principle**
+Prefer breaking down functionality into small capabilities that are individually testable.
+In addition to the external API-level tests, also create tests for the smaller capabilities.
+For example, a serialization and deserialization capability based on the model type is individually testable.
+
+### **Testing guidelins**
+A test should almost always test a single fact about the behavior of the code. test_after_put_get_returns_the_object is a good example.
+
+Test scope: Test behavior == cohesive whole == complete story
+for example, in order to test put(), you also need to test get().
+It's something larger - as long as that part is a "complete stroy" in itself.
+Test behaviors instead of implementations (again, an implementation detail that is in itself a cohesive whole is fine to test).
+
+Tests must be isolated so they never interfere with each other.
+
+Tests must use clear language: decisive, specific and explicit.
+
+Avoid using mocks. Simulators for quick tests are fine (it's ok to test using in-memory sqlite some of the time instead of disk based for performance).
 
 
 
