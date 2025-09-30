@@ -25,10 +25,15 @@ git status                                  # Check working directory
 
 ### **Testing & Validations Strategy**
 **IMPORTANT**:
-After ANY change, the `./devtools/run_all_agent_validations.sh` must pass before returning to the user
-without any errors or warnings. Don't accept any errors or warnings unless you failed fixing them.
+After ANY change, before responding to the user and before moving to the next sub-task or next task, 
+the `./devtools/run_all_agent_validations.sh` must pass without any errors or warnings.
+Don't accept any errors or warnings unless you failed fixing them.
 
 All changes must pass full validation suite before user response.
+
+In order to finish every task and sub-task, you must run `./devtools/run_all_agent_validations.sh`.
+You must never move to the next sub-task before running `./devtools/run_all_agent_validations.sh` and getting a result
+without errors or warnings.
 
 
 🚨🚨🚨 ABSOLUTE ZERO TOLERANCE POLICY 🚨🚨🚨
@@ -56,8 +61,7 @@ All changes must pass full validation suite before user response.
 - All tests and validations pass as-is.
 - You've tried to fix the errors and failed.
 
-In order to finish every task and sub-task, you must run `./devtools/run_all_agent_validations.sh`.
-You must never move to the next sub-task before running the validations and getting a result without errors or warnings.
+
 If you failed fixing, stop and tell the user.
 
 ### **🚫 FORBIDDEN PHRASES 🚫**
