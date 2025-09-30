@@ -27,16 +27,13 @@ class DiskBackedCache:
         disk_ttl_seconds: float,
         max_item_size_bytes: int,  # items larger than this are disk-only
     ) -> None:
-        # Step 1: Simple in-memory cache storage
-        self._memory_cache: dict[str, CacheableModel] = {}
+        raise NotImplementedError()
 
     def get(self, key: str, timestamp: Optional[float] = None) -> Optional[CacheableModel]:
-        # Step 1: Simple retrieval from memory cache
-        return self._memory_cache.get(key)
+        raise NotImplementedError()
 
     def put(self, key: str, value: CacheableModel, timestamp: Optional[float] = None) -> None:
-        # Step 1: Simple storage in memory cache
-        self._memory_cache[key] = value
+        raise NotImplementedError()
 
     def delete(self, key: str) -> None:
         raise NotImplementedError()

@@ -5,7 +5,7 @@ Implementing a two-tier LRU cache for Pydantic objects with in-memory and SQLite
 Each step is a complete, testable capability with its own tests.
 
 ## Progress Tracking
-- [x] Step 1: In-Memory Cache - Basic Put/Get
+- [ ] Step 1: In-Memory Cache - Basic Put/Get
 - [ ] Step 2: Key Validation
 - [ ] Step 3: Model Type Validation
 - [ ] Step 4: Serialization/Deserialization
