@@ -73,7 +73,7 @@ All changes must pass full validation suite before user response
 ## **Core Development Principles**
 - **One Change = One Complete, testable Capability**
 - **Validation-Driven Development** (every change must pass all validations)
-- **Test-First Implementation** (external API-level tests are Priority 1)
+- **Test-First Implementation** (behavior tests that target the API of the package are Priority 1)
 - **No Layer-Based Changes**. Complete capabilities only - DO NOT implement multiple distinct capabilities in the same change. DO implement a capability and all its tests before continuing to the next capability.
 
 ### **Small parts principle**
@@ -86,14 +86,14 @@ A test should almost always test a single fact about the behavior of the code. t
 
 Test scope: Test behavior == cohesive whole == complete story
 for example, in order to test put(), you also need to test get().
-It's something larger - as long as that part is a "complete stroy" in itself.
+It's ok to test a small part of something larger - as long as that part is a "complete stroy" in itself.
 Test behaviors instead of implementations (again, an implementation detail that is in itself a cohesive whole is fine to test).
 
 Tests must be isolated so they never interfere with each other.
 
 Tests must use clear language: decisive, specific and explicit.
 
-Avoid using mocks. Simulators for quick tests are fine (it's ok to test using in-memory sqlite some of the time instead of disk based for performance).
+Avoid using mocks. Simulators for quick tests are fine (for example, it's ok to test using in-memory sqlite some of the time instead of disk based for performance).
 
 Test file names should be significant and descriptive of content.
 
@@ -124,12 +124,3 @@ The project implements a two-tier cache system as specified in `spec.md`:
 - **Test Runner**: pytest with pytest-testmon and pytest-watch
 - **Test Database**: Uses `:memory:` SQLite for testing
 
-## Implementation Status
-
-The project skeleton is set up with:
-- Base `CacheableModel` and `DiskBackedCache` class signatures defined
-- All methods currently raise `NotImplementedError` (to be implemented)
-- Basic test structure in place
-- Development tooling configured
-
-The main implementation work following `spec.md` requirements is pending.
