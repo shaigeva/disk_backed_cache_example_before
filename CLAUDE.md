@@ -4,7 +4,11 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-This is a disk-backed cache implementation project for Pydantic objects, featuring a two-tier LRU cache with in-memory and SQLite-backed persistent storage. The project follows the specification in `spec.md`.
+This is a disk-backed cache implementation project for Pydantic objects, featuring a two-tier LRU cache with in-memory and SQLite-backed persistent storage.
+
+The project follows the specification in `spec.md`.
+
+Implementation follows the plan in `IMPLEMENTATION_PLAN.md` - and progress is updated there.
 
 ## Development Guidelines
 
