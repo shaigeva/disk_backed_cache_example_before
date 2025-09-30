@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(command ls -la devtools/)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
