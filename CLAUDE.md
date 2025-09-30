@@ -117,8 +117,8 @@ BAD: test_cache.py
 
 The project implements a two-tier cache system as specified in `spec.md`:
 
-- **In-Memory Cache**: Fast access, limited size, shorter TTL
-- **SQLite Disk Cache**: Persistent storage, larger capacity, longer TTL
+- **In-Memory Cache**: Fast access, stores pydantic objects (not serialized), limited size, shorter TTL
+- **SQLite Disk Cache**: Persistent storage, stores serialized objects as json, larger capacity, longer TTL
 - **LRU Eviction**: Least Recently Used eviction strategy with count and size-based limits
 - **Thread Safety**: Read-write locks for concurrent access
 
@@ -135,5 +135,6 @@ The project implements a two-tier cache system as specified in `spec.md`:
 - **Linter/Formatter**: Ruff (configured in `pyproject.toml`)
 - **Type Checker**: ty
 - **Test Runner**: pytest with pytest-testmon and pytest-watch
-- **Test Database**: Uses `:memory:` SQLite for testing
+- **Test Database**: Most tests use `:memory:` SQLite for testing. However, there must be some sanity tests which create
+  a temporary disk-based cache to verify correctness (cleaned after the test).
 
