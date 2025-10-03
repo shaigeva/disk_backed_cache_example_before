@@ -85,6 +85,7 @@ If you failed fixing, stop and tell the user.
 - **Validation-Driven Development** (every change must pass all validations)
 - **Test-First Implementation** (behavior tests that target the API of the package are Priority 1)
 - **No Layer-Based Changes**. Complete capabilities only - DO NOT implement multiple distinct capabilities in the same change. DO implement a capability and all its tests before continuing to the next capability.
+- **Before finishing a task, sub-task or todo, make sure all new or changed behaviors have tests that cover them well**
 
 ### **Small parts principle**
 Prefer breaking down functionality into small capabilities that are individually testable.
