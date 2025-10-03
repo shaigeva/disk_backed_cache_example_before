@@ -94,10 +94,15 @@ For example, a serialization and deserialization capability based on the model t
 ### **Testing guidelines**
 A test should almost always test a single fact about the behavior of the code. test_after_put_get_returns_the_object is a good example.
 
+Cover all behaviors of a feature as much as possible.
+
 Test scope: Test behavior == cohesive whole == complete story
 for example, in order to test put(), you also need to test get().
+The "truth" of how some component or full software is its external observable behavior. Tests should verify using that behavior is much as possible.
 It's ok to test a small part of something larger - as long as that part is a "complete stroy" in itself.
 Test behaviors instead of implementations (again, an implementation detail that is in itself a cohesive whole is fine to test).
+Testing implementation details such is private members should be avoided if possible, but acceptable if needed to make a verificiation.
+
 
 Tests must be isolated so they never interfere with each other.
 
