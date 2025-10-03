@@ -90,7 +90,7 @@ Prefer breaking down functionality into small capabilities that are individually
 In addition to the external API-level tests, also create tests for the smaller capabilities.
 For example, a serialization and deserialization capability based on the model type is individually testable.
 
-### **Testing guidelins**
+### **Testing guidelines**
 A test should almost always test a single fact about the behavior of the code. test_after_put_get_returns_the_object is a good example.
 
 Test scope: Test behavior == cohesive whole == complete story
@@ -104,10 +104,54 @@ Tests must use clear language: decisive, specific and explicit.
 
 Avoid using mocks. Simulators for quick tests are fine (for example, it's ok to test using in-memory sqlite some of the time instead of disk based for performance).
 
-Test file names should be significant, specific and descriptive of content. 
+Test file names should be significant, specific and descriptive of content.
 GOOD: test_basic_put_and_get.py
 BAD: test_step_03_basic_put_and_get.py
 BAD: test_cache.py
+
+### **Database Path Fixture (`db_path`)**
+
+**ALWAYS use the `db_path` fixture for all tests that need a database path.**
+
+The `db_path` fixture is defined in `tests/conftest.py` and provides configurable database paths:
+
+```python
+@pytest.fixture
+def db_path(request: pytest.FixtureRequest) -> Generator[str, None, None]:
+    """Provide database path based on --db-mode parameter.
+
+    - In 'disk' mode (default): Creates a temporary file for each test
+    - In 'memory' mode: Returns ':memory:' for in-memory database
+
+    Each test gets its own isolated database.
+    """
+```
+
+**Usage in tests:**
+```python
+def test_something(db_path: str) -> None:
+    cache = DiskBackedCache(
+        db_path=db_path,
+        model=MyModel,
+        # ... other parameters
+    )
+    # ... test code
+```
+
+**Running tests:**
+- Default (disk mode): `pytest` or `pytest --db-mode=disk`
+- Memory mode (faster): `pytest --db-mode=memory`
+
+**Important notes:**
+- The default mode is `disk` to ensure tests reflect real-world usage
+- Each test gets an isolated database (no interference between tests)
+- Tests requiring disk persistence should skip in memory mode:
+  ```python
+  def test_persistence(db_path: str, request: pytest.FixtureRequest) -> None:
+      if request.config.getoption("--db-mode") == "memory":
+          pytest.skip("Test requires disk persistence")
+      # ... test code
+  ```
 
 
 
@@ -135,6 +179,7 @@ The project implements a two-tier cache system as specified in `spec.md`:
 - **Linter/Formatter**: Ruff (configured in `pyproject.toml`)
 - **Type Checker**: ty
 - **Test Runner**: pytest with pytest-testmon and pytest-watch
-- **Test Database**: Most tests use `:memory:` SQLite for testing. However, there must be some sanity tests which create
-  a temporary disk-based cache to verify correctness (cleaned after the test).
+- **Test Database**: Use the `db_path` fixture (defined in `tests/conftest.py`) for all tests.
+  By default, tests run with disk-based databases. Use `--db-mode=memory` for faster in-memory testing.
+  See "Database Path Fixture" section above for details.
 
