@@ -9,6 +9,7 @@ This is a disk-backed cache implementation project for Pydantic objects, featuri
 The project follows the specification in `spec.md`.
 
 Implementation follows the plan in `IMPLEMENTATION_PLAN.md` - and progress is updated there.
+You should update the implementation plan after finishing every single step. Don't do several steps together and only then update it.
 
 ## Development Guidelines
 
