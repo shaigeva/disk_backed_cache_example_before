@@ -1,9 +1,10 @@
 from typing import Optional, Type
 
-from pydantic import BaseModel
+from pydantic import BaseModel, ConfigDict
 
 
 class CacheableModel(BaseModel):
+    model_config = ConfigDict(frozen=True)  # Makes objects immutable, otherwise cached objects can be modified...
     schema_version: str
 
 
